@@ -50,7 +50,7 @@ types.forEach( function( type, i1 ){
 client.index(
   {
     index: config.indexName,
-    type: 'address',
+    type: 'doc',
     id: 'way:265038872',
     body: {
       'center_point': {

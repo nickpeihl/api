@@ -14,12 +14,10 @@ module.exports = {
         }
       }],
       'should': [{
-        'match': {
+        'match_phrase': {
           'phrase.default': {
             'query': 'soho grand',
-            'cutoff_frequency': 0.01,
             'analyzer': 'peliasPhrase',
-            'type': 'phrase',
             'slop': 2,
             'boost': 1
           }
@@ -27,12 +25,10 @@ module.exports = {
       },{
         'function_score': {
           'query': {
-            'match': {
+            'match_phrase': {
               'phrase.default': {
                 'query': 'soho grand',
-                'cutoff_frequency': 0.01,
                 'analyzer': 'peliasPhrase',
-                'type': 'phrase',
                 'slop': 2,
                 'boost': 1
               }

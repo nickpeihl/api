@@ -3,13 +3,11 @@ module.exports = {
     'bool': {
       'must': [
         {
-          'match': {
+          'match_phrase': {
             'name.default': {
               'analyzer': 'peliasQueryFullToken',
-              'type': 'phrase',
               'boost': 1,
               'slop': 3,
-              'cutoff_frequency': 0.01,
               'query': 'one two'
             }
           }
@@ -97,11 +95,9 @@ module.exports = {
           }
         },
         {
-          'match': {
+          'match_phrase': {
             'phrase.default': {
               'analyzer' : 'peliasPhrase',
-              'cutoff_frequency': 0.01,
-              'type' : 'phrase',
               'boost' : 1,
               'slop' : 3,
               'query' : 'one two'

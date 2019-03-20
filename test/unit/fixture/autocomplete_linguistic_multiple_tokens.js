@@ -2,28 +2,23 @@ module.exports = {
   'query': {
     'bool': {
       'must': [{
-        'match': {
+        'match_phrase': {
           'name.default': {
             'analyzer': 'peliasQueryFullToken',
-            'type': 'phrase',
             'boost': 1,
             'slop': 3,
-            'cutoff_frequency': 0.01,
             'query': 'one two'
           }
         }
       },
       {
         'constant_score': {
-          'query': {
-            'match': {
+          'filter': {
+            'match_phrase': {
               'name.default': {
                 'analyzer': 'peliasQueryPartialToken',
                 'boost': 100,
                 'query': 'three',
-                'type': 'phrase',
-                'operator': 'and',
-                'cutoff_frequency': 0.01,
                 'slop': 3
               }
             }
@@ -32,13 +27,11 @@ module.exports = {
       }],
       'should':[
         {
-          'match': {
+          'match_phrase': {
             'phrase.default': {
               'analyzer' : 'peliasPhrase',
-              'type' : 'phrase',
               'boost' : 1,
               'slop' : 3,
-              'cutoff_frequency': 0.01,
               'query' : 'one two'
             }
           }
